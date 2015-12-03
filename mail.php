@@ -2,6 +2,8 @@
 require_once("header.php");
 require_once("common.php");
 
+if($_SERVER["REQUEST_METHOD"]=="GET")
+{
 ?>
 	<h1>Email Page</h1>
 	<a href="index.php">Home</a>
@@ -11,17 +13,33 @@ require_once("common.php");
 	
 	<h2>Send email</h2>
 	<form>
-		<label>
-			From: <input type="text" name="from"><br>
-		</label>
-		<label>
-			To: <input type="text" name="to"><br>
-		</label>
-		<label>
-			Subject: <input type="text" name="subject"><br>
-		</label>
+		<label>From: <input type="email" name="from"></label><br>
+		<label>To: <input type="email" name="to"></label><br>
+		<label>Subject: <input type="text" name="subject"</label><br>
 		Message: 
+		<?php 		
+			$message = "<ul>";
+			foreach($_SESSION["events"] as $event)
+			{
+				$message .= "<li>{$event}</li>";
+			}
+			$message .= "</ul>";
+			
+			echo $message;
+		?>
+		<br>
+		<button type="submit">Send Email</button>
 	</form>
-	
 <?php
-require_once("footer.php");
+}
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+	$to = $_POST["to"];
+	$from = "From: {$_POST["from"]}" . "\r\n";
+	$subject = $_POST["subject"];
+	
+	mail("$to", $subject, $message, $from);
+	header("Location: mail.php");
+	
+	require_once("footer.php");
+}

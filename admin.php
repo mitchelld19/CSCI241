@@ -64,10 +64,14 @@ else if($_SERVER["REQUEST_METHOD"] == "POST")
 		//Add the event
 		$event = array();
 		
-		$event[] = $_POST["name"];
+		$event[] = $_POST["event"];
 		$event[] = $_POST["location"];
 		
-		appendEvent("events.txt", implode("|", $event) . "\r\n");
+		$event = implode("|", $event);
+		
+		var_dump($event);
+		
+		appendEvent("events.txt", $event . "\r\n");
 		
 		header("Location: admin.php");
 	}

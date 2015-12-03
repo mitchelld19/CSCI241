@@ -25,30 +25,59 @@ if($_SERVER["REQUEST_METHOD"]=="GET")
 				<button type="submit">Add to List</button>
 			</form>
 		<?php
+		echo "</li>";
 	}
 	echo "</ul>";
-	require("footer.php");
-}	
-else if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-	if(isset($_POST["addToList"]))
+	
+	echo "<h2>Your List</h2>";
+	echo "<ul>";
+	
+	if(!isset($_SESSION["events"]))
 	{
-		echo "<h2>Your List:</h2>";
-		$events = readEvents("events.txt");
-		if(isset($events[$_POST["addToList"]]))
+		echo "You have no events";
+	}
+	else if (isset($_SESSION["events"]))
+	{		
+		foreach($_SESSION["events"] as $eventIndex => $event)
 		{
-			//an event exists at the position i am asked to add
-			$event = $events[$_POST["addToList"]];
-			$event = explode("|", $event);
-			echo "<ul>";
-			echo "<li>". $event[0] . " - " . $event[1] ."</li>";
-			echo "</ul>";
-			
-			echo "You can also email this to yourself or a friend.";
+			echo "<li>{$event}";
+			?>
+			<form method="post" action="events.php">
+				<input type="hidden" name="deleteEvent" value="<?php  echo $eventIndex; ?>">
+				<button type="submit">X</button>
+			</form>
+			<?php
+			echo "</li>";
 		}
 	}
+	
+	echo "</ul>";
+	
+	echo "You can also " . '<a href="mail.php">email</a>' . " this to yourself or a friend.";
+	require("footer.php"); 
+}
 
-	//header("Location: events.php");
+else if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+	 if(isset($_POST["addToList"]))
+	 {
+	 	$events = readEvents("events.txt");
+		$userEvent = $events[$_POST["addToList"]];
+		$userEvent = explode("|", $userEvent);
+		$_SESSION["events"][] = $userEvent[0] . " - " . $userEvent[1];
+			
+		header("Location: events.php");
+	}
+	else if(isset($_POST["deleteEvent"]))
+	{
+		$events = $_SESSION["events"];
+		$userEvent = $_POST["deleteEvent"];
+		
+		unset($events[$userEvent]);
+		
+		header("Location: events.php");
+	}
+	
 }
 
 require("footer.php");
