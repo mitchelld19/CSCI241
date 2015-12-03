@@ -35,10 +35,12 @@ if($_SERVER["REQUEST_METHOD"]=="GET")
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
 	$to = $_POST["to"];
-	$from = "From: {$_POST["from"]}" . "\r\n";
+	$from = $_POST["from"];
 	$subject = $_POST["subject"];
 	
-	mail("$to", $subject, $message, $from);
+	$headers = 'From:'. $from . "\r\n";
+	
+	mail("$to", $subject, $message, $headers);
 	header("Location: mail.php");
 	
 	require_once("footer.php");
