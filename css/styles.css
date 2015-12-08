@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'super_mario_256regular';
+    src: url('fonts/supermario256-webfont.eot');
+    src: url('fonts/supermario256-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/supermario256-webfont.woff2') format('woff2'),
+         url('fonts/supermario256-webfont.woff') format('woff'),
+         url('fonts/supermario256-webfont.ttf') format('truetype'),
+         url('fonts/supermario256-webfont.svg#super_mario_256regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html{
+	background: url('../images/background.jpg') no-repeat center center fixed; 
+ 	background-size: cover;
+}
+
+body{
+	font: 1.25em/21.5pt "Myriad Pro", Helvetica, Arial, sans-serif;
+}
+
+.container{
+	padding: 20px 30px;
+	margin: 20px auto;
+	width: 960px;
+	text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    background: rgba(255,255,255,.95);
+}
+
+.result{
+	width: 600px;
+	
+}
+
+.result2{
+	width: 500px;
+}
+
+/* ---- Typography ---- */
+h1, h2 {
+	font-family: super_mario_256regular, Helvetica, Arial, sans-serif;
+	letter-spacing: 1.5px;
+}
+
+h1 {
+	font: 2em;	
+	text-align: center;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 20pt;
+	margin: 20px auto;
+	width: 800px;
+}
+
+p{
+	width: 500px;
+	margin: 10px auto;
+}
+
+/* ---- Nav ---- */
+nav{
+	overflow: hidden;
+	width: 850px;
+	margin: 0 auto 20px auto;
+}
+
+
+nav ul li{
+	list-style: none;
+	float: left;
+}
+
+nav ul li a{
+	text-decoration: none;
+	display: block;
+	background-color: green;
+	color: #000;
+	padding: 5px 30px 5px 25px;
+	margin: 0 30px;
+	background: url('../images/coin.png') no-repeat left;
+}
+
+nav ul li a:hover{
+	background: url('../images/question.png') no-repeat right 5px;
+}
+
+
+
+/* ----- Forms ----- */
+form{
+    font-family: 'Open Sans Condensed', arial, sans;
+    color: #000;
+    width: 500px;
+    margin: 30px auto;
+}
+
+form input[type=text], form select{
+    border: 1px solid #CCC;
+    color: #000;
+    height: 20px;
+    margin-bottom: 16px;
+    margin-top: 2px;
+    padding: 5px 0px 5px 5px;
+    width: 500px;
+    border-radius: 4px; 
+}
+
+form select {
+    background: url('../images/down-arrow.png') no-repeat right;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    height: 35px;
+}
+
+form button {
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 10px 25px 10px 25px;
+    color: #000;
+    border-radius: 4px;
+    float: right;
+}
+
+form button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+    border-color: #ADADAD;
+}
+
+*:focus {outline: none;}
+
+.question{
+	display: inline;
+}

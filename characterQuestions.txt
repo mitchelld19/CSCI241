@@ -1,0 +1,5 @@
+Which color do you like most?|Red|Green|Brown|Pink
+What food do you like?|Mushroom|Apple|Banana|Peach
+Which would you enjoy doing?|Running|Eating Apples|Throwing Items|Smelling Flowers
+If you had to choose one item of clothing to wear, which one would it be?|Overalls|Shoes|A Tie|A Dress
+What is your favorite animal?|Dog|Dinosaur|Monkey|Cat
