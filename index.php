@@ -2,7 +2,6 @@
 require_once("header.php");
 require_once("common.php");
 ?>
-	
 	<header>
 		<h1>ALL ABOUT MARIO</h1>
 		<nav>
